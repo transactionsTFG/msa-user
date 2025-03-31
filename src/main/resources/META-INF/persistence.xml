@@ -5,11 +5,11 @@
                                  https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
 
-    <persistence-unit name="serverB" transaction-type="JTA">
-        <jta-data-source>jdbc/serverB</jta-data-source>   
+    <persistence-unit name="msa-user" transaction-type="JTA">
+        <jta-data-source>jdbc/msa-user</jta-data-source>   
         <properties>
-            <property name="jakarta.persistence.jtaDataSource" value="jdbc/serverB"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop"/>
+            <property name="jakarta.persistence.jtaDataSource" value="jdbc/msa-user"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
