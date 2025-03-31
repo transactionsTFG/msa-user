@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ucm.tfg</groupId>
-  <artifactId>serverB</artifactId>
+  <artifactId>msa-user</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
-  <name>serverB</name>
+  <name>msa-user</name>
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
@@ -28,14 +28,6 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oracle.weblogic</groupId>
-            <artifactId>weblogic-server-pom</artifactId>
-            <version>14.1.2-0-0</version>
-            <type>pom</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -63,39 +55,12 @@
 
   </dependencies>
   <build>
-	    <finalName>serverB</finalName>
+	    <finalName>msa-user</finalName>
 	    <plugins>
 	        <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
-            </plugin>
-			<!-- Configuración de wsimport -->
-			<!-- Comando: mvn jaxws:wsimport -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <wsdlUrls>
-                        <wsdlUrl>https://localhost:7002/serverA/BankService?wsdl</wsdlUrl>
-                    </wsdlUrls>
-                    <vmArgs>
-                        <vmArg>-Dcom.sun.net.ssl.checkRevocation=false</vmArg>
-                        <vmArg>-Dcom.sun.security.enableAIAcaIssuers=false</vmArg>
-                        <vmArg>-Djavax.net.ssl.trustStore='C:/Program Files/Java/jdk-17.0.13/lib/security/cacerts'</vmArg>
-                        <vmArg>-Djavax.net.ssl.trustStorePassword=changeit</vmArg>
-                    </vmArgs>
-                    <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>soapclient.bank</packageName>
-                </configuration>
             </plugin>
 	    </plugins>
 	</build>
