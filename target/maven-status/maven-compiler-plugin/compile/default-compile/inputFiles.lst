@@ -1,1 +1,8 @@
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\business\publisher\IJMSPublisher.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\business\publisher\JMSPublisher.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\business\usecase\createuser\CreateUserUseCase.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\business\usecase\createuser\CreateUserUseCaseImpl.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\integration\producer\EntityManagerProducer.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\integration\producer\ResourceProducer.java
 D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\integration\User.java
+D:\Universidad\4Carrera\TFG\repository\msa-user\src\main\java\listener\UserServiceListener.java

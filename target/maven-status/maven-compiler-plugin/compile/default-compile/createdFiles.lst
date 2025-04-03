@@ -1,1 +1,8 @@
+listener\UserServiceListener.class
+business\publisher\JMSPublisher.class
 integration\User.class
+business\usecase\createuser\CreateUserUseCase.class
+integration\producer\EntityManagerProducer.class
+business\publisher\IJMSPublisher.class
+business\usecase\createuser\CreateUserUseCaseImpl.class
+integration\producer\ResourceProducer.class

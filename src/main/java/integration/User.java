@@ -33,4 +33,13 @@ public class User {
     private String surname;
     @Column(nullable = false)
     private long typeUser;
+    
+    public User(String email, String name, String password, String phone, String surname, long typeUser) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.surname = surname;
+        this.typeUser = typeUser;
+    }
 }
