@@ -58,7 +58,11 @@
             <version>8.0.0</version>
             <scope>provided</scope>
         </dependency>
-
+         <dependency>
+            <groupId>ucm.tfg</groupId>
+            <artifactId>msa-commons</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>msa-user</finalName>
