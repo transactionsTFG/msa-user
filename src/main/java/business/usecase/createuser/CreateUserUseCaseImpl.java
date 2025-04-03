@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import business.publisher.IJMSPublisher;
 import integration.User;
 
-
 @Stateless
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
 

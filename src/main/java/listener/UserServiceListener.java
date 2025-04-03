@@ -36,7 +36,6 @@ public class UserServiceListener implements MessageListener{
         }
     }
     
-
     @EJB
     public void setCreateUserUseCase(CreateUserUseCase createUserUseCase) {
         this.createUserUseCase = createUserUseCase;
