@@ -1,7 +1,9 @@
-package integration;
+package business.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import msa.commons.saga.SagaPhases;
 
 @Entity
 @Getter
@@ -33,6 +36,9 @@ public class User {
     private String surname;
     @Column(nullable = false)
     private long typeUser;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private SagaPhases status;
     
     public User(String email, String name, String password, String phone, String surname, long typeUser) {
         this.email = email;
