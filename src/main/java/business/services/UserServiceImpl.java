@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
 import business.dto.CreateUserDTO;
-import business.eventdispatcher.IJMSEventDispatcher;
 import business.mapper.UserMapper;
 import business.user.User;
+import domainevent.publisher.IJMSEventDispatcher;
 import msa.commons.event.EventId;
 import msa.commons.microservices.user.commandevent.CreateUserCommand;
 import msa.commons.saga.SagaPhases;

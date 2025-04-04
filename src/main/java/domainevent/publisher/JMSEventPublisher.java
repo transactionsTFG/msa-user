@@ -1,4 +1,4 @@
-package business.eventdispatcher;
+package domainevent.publisher;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,7 +12,7 @@ import msa.commons.event.EventId;
 import msa.commons.event.Event;
 
 @Stateless
-public class JMSEventDispatcher implements IJMSEventDispatcher {
+public class JMSEventPublisher implements IJMSEventDispatcher {
 
     private ConnectionFactory connectionFactory;
     private Queue orchestratorQueue;

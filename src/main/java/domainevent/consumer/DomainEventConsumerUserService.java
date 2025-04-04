@@ -1,4 +1,4 @@
-package listener;
+package domainevent.consumer;
 
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
@@ -16,7 +16,7 @@ import msa.commons.event.Event;
 
 
 @MessageDriven(mappedName = "jms/userServiceQueue")
-public class UserServiceListener implements MessageListener{
+public class DomainEventConsumerUserService implements MessageListener{
     
     private Gson gson;
     private EventHandlerRegistry eventHandlerRegistry;

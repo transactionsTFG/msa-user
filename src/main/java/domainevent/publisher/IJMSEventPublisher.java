@@ -1,7 +1,7 @@
-package business.eventdispatcher;
+package domainevent.publisher;
 
 import msa.commons.event.EventId;
 
-public interface IJMSEventDispatcher {
+public interface IJMSEventPublisher {
     void publish(EventId event, Object data);    
 }
