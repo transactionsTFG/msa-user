@@ -1,4 +1,4 @@
-package business.command.handler;
+package domainevent.command.handler;
 
 public interface EventHandler {
     void handleCommand(Object event);

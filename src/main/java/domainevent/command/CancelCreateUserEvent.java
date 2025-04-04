@@ -1,11 +1,11 @@
-package business.command;
+package domainevent.command;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import business.command.handler.EventHandler;
-import business.command.qualifier.FailCreateUserEventQualifier;
 import business.services.UserService;
+import domainevent.command.handler.EventHandler;
+import domainevent.command.qualifier.FailCreateUserEventQualifier;
 import msa.commons.parser.NumberParser;
 
 @Stateless

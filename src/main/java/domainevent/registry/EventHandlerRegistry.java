@@ -1,4 +1,4 @@
-package integration.startup;
+package domainevent.registry;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -8,9 +8,9 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import business.command.handler.EventHandler;
-import business.command.qualifier.FailCreateUserEventQualifier;
-import business.command.qualifier.SuccessUserEventQualifier;
+import domainevent.command.handler.EventHandler;
+import domainevent.command.qualifier.FailCreateUserEventQualifier;
+import domainevent.command.qualifier.SuccessUserEventQualifier;
 import msa.commons.event.EventId;
 
 @Singleton

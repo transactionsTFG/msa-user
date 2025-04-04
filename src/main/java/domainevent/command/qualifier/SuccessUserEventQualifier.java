@@ -1,4 +1,4 @@
-package business.command.qualifier;
+package domainevent.command.qualifier;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

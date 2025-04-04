@@ -1,13 +1,12 @@
-package business.command;
+package domainevent.command;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import org.mapstruct.control.MappingControl.Use;
 
-import business.command.handler.EventHandler;
-import business.command.qualifier.SuccessUserEventQualifier;
 import business.services.UserService;
+import domainevent.command.handler.EventHandler;
+import domainevent.command.qualifier.SuccessUserEventQualifier;
 import msa.commons.parser.NumberParser;
 
 @Stateless
