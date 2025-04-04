@@ -66,3 +66,11 @@ buildNumber.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,visualstudiocode
+.vscode/*
+.vscode
+
+.settings/*
+.settings
+
+target/*
+target
