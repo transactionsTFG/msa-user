@@ -12,7 +12,7 @@ import msa.commons.event.EventId;
 import msa.commons.event.Event;
 
 @Stateless
-public class JMSEventPublisher implements IJMSEventDispatcher {
+public class JMSEventPublisher implements IJMSEventPublisher {
 
     private ConnectionFactory connectionFactory;
     private Queue orchestratorQueue;

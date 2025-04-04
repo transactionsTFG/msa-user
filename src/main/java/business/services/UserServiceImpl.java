@@ -8,7 +8,7 @@ import javax.persistence.LockModeType;
 import business.dto.CreateUserDTO;
 import business.mapper.UserMapper;
 import business.user.User;
-import domainevent.publisher.IJMSEventDispatcher;
+import domainevent.publisher.IJMSEventPublisher;
 import msa.commons.event.EventId;
 import msa.commons.microservices.user.commandevent.CreateUserCommand;
 import msa.commons.saga.SagaPhases;
@@ -17,12 +17,12 @@ import msa.commons.saga.SagaPhases;
 public class UserServiceImpl implements UserService {
 
     private EntityManager entityManager;
-    private IJMSEventDispatcher jmsEventDispatcher;
+    private IJMSEventPublisher jmsEventDispatcher;
 
     public UserServiceImpl() {}
 
     @Inject
-    public UserServiceImpl(EntityManager entityManager, IJMSEventDispatcher jmsEventDispatcher) {
+    public UserServiceImpl(EntityManager entityManager, IJMSEventPublisher jmsEventDispatcher) {
         this.entityManager = entityManager;
         this.jmsEventDispatcher = jmsEventDispatcher;
     }
