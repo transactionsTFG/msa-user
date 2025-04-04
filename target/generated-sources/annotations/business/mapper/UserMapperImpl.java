@@ -8,7 +8,7 @@ import msa.commons.saga.SagaPhases;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-04T15:20:47+0200",
+    date = "2025-04-04T15:48:16+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.13 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
@@ -49,9 +49,7 @@ public class UserMapperImpl implements UserMapper {
             user.setPassword( userDTO.getPassword() );
             user.setPhone( userDTO.getPhone() );
             user.setSurname( userDTO.getSurname() );
-            if ( userDTO.getTypeUser() != null ) {
-                user.setTypeUser( Long.parseLong( userDTO.getTypeUser() ) );
-            }
+            user.setTypeUser( userDTO.getTypeUser() );
         }
         user.setStatus( status );
 

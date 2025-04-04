@@ -35,12 +35,12 @@ public class User {
     private String phone;
     private String surname;
     @Column(nullable = false)
-    private long typeUser;
+    private String typeUser;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SagaPhases status;
     
-    public User(String email, String name, String password, String phone, String surname, long typeUser) {
+    public User(String email, String name, String password, String phone, String surname, String typeUser) {
         this.email = email;
         this.name = name;
         this.password = password;

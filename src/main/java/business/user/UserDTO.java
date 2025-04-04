@@ -12,5 +12,5 @@ public class UserDTO {
     private String password;
     private String phone;
     private String surname;
-    private long typeUser;
+    private String typeUser;
 }
