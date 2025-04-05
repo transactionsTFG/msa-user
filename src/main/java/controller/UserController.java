@@ -1,5 +1,6 @@
 package controller;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -27,7 +28,7 @@ public class UserController {
                         .entity("User created successfully").build();
     }
 
-    @Inject
+    @EJB
     public void setUserService(UserService userService) {
         this.userService = userService;
     }

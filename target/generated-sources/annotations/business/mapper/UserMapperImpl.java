@@ -8,7 +8,7 @@ import msa.commons.saga.SagaPhases;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-04T15:48:16+0200",
+    date = "2025-04-05T14:40:22+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.13 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
