@@ -27,7 +27,7 @@ public class UserController {
     @POST
     @Transactional
     public Response createUser(CreateUserDTO createUserDTO) {
-        LOGGER.info("Creando usuario: {}", createUserDTO.toString());
+        LOGGER.info("Creando usuario: {}", createUserDTO);
         boolean isCreated = this.userService.beginCreateUser(createUserDTO);
         if (!isCreated) 
             return Response.status(Response.Status.CONFLICT).entity("Usuario ya existente").build();
