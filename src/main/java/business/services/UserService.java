@@ -1,9 +1,10 @@
 package business.services;
 
 import business.dto.CreateUserDTO;
+import business.user.UserDTO;
 
 public interface UserService {
-    boolean beginCreateUser(CreateUserDTO userDTO);
+    UserDTO beginCreateUser(CreateUserDTO userDTO);
     void confirmCreateUser(long id);
     void cancelCreateUser(long id);
 }

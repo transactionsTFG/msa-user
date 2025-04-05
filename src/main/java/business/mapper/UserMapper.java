@@ -1,6 +1,7 @@
 package business.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import business.dto.CreateUserDTO;
@@ -12,5 +13,7 @@ import msa.commons.saga.SagaPhases;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
     UserDTO entityToDto(User userDTO);
+    
+    @Mapping(target = "active", expression = "java(false)")
     User createUserDTOtoEntity(CreateUserDTO userDTO, SagaPhases status);
 }

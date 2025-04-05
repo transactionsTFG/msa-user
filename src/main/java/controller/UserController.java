@@ -15,28 +15,27 @@ import org.apache.logging.log4j.Logger;
 
 
 import business.dto.CreateUserDTO;
-import business.services.UserService;
+import business.servicesevent.UserServicesEventAdapter;
 
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserController {
     private static final Logger LOGGER = LogManager.getLogger(UserController.class);
-    private UserService userService;
+    private UserServicesEventAdapter userServiceEventAdapter;
     @POST
     @Transactional
     public Response createUser(CreateUserDTO createUserDTO) {
         LOGGER.info("Creando usuario: {}", createUserDTO);
-        boolean isCreated = this.userService.beginCreateUser(createUserDTO);
+        boolean isCreated = this.userServiceEventAdapter.beginCreateUser(createUserDTO);
         if (!isCreated) 
             return Response.status(Response.Status.CONFLICT).entity("Usuario ya existente").build();
-            
         return Response.status(Response.Status.CREATED).entity("Usuario creado correctamente").build();
     }
 
     @EJB
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserService(UserServicesEventAdapter userServiceEventAdapter) {
+        this.userServiceEventAdapter = userServiceEventAdapter;
     }
 
 }
