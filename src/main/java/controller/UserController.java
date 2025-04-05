@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.google.gson.Gson;
 
 import business.dto.CreateUserDTO;
 import business.services.UserService;
