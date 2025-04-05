@@ -23,9 +23,11 @@ public class UserController {
     @POST
     @Transactional
     public Response createUser(CreateUserDTO createUserDTO) {
-        this.userService.beginCreateUser(createUserDTO);
-        return Response.status(Response.Status.CREATED)
-                        .entity("User created successfully").build();
+        boolean isCreated = this.userService.beginCreateUser(createUserDTO);
+        if (!isCreated) 
+            return Response.status(Response.Status.CONFLICT).entity("Usuario ya existente").build();
+            
+        return Response.status(Response.Status.CREATED).entity("Usuario creado correctamente").build();
     }
 
     @EJB
