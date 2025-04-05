@@ -9,9 +9,10 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 import domainevent.command.handler.EventHandler;
-import domainevent.command.qualifier.FailCreateUserEventQualifier;
-import domainevent.command.qualifier.SuccessUserEventQualifier;
+
 import msa.commons.event.EventId;
+import msa.commons.microservices.user.qualifier.CommitUserQualifier;
+import msa.commons.microservices.user.qualifier.RollbackUserQualifier;
 
 @Singleton
 @Startup
@@ -31,11 +32,11 @@ public class EventHandlerRegistry {
     }
 
     @Inject
-    public void setConfirmCreateUsHandler(@SuccessUserEventQualifier EventHandler confirmCreateUseHandler) {
+    public void setConfirmCreateUsHandler(@CommitUserQualifier EventHandler confirmCreateUseHandler) {
         this.confirmCreateUseHandler = confirmCreateUseHandler;
     }
     @Inject
-    public void setCancelCreateUsHandler(@FailCreateUserEventQualifier EventHandler cancelCreateUseHandler) {
+    public void setCancelCreateUsHandler(@RollbackUserQualifier EventHandler cancelCreateUseHandler) {
         this.cancelCreateUseHandler = cancelCreateUseHandler;
     }
 
