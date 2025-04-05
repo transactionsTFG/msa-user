@@ -32,7 +32,7 @@ public class DomainEventConsumerUserService implements MessageListener{
         try {
             if(msg instanceof TextMessage m) {
                 Event event = this.gson.fromJson(m.getText(), Event.class);
-                LOGGER.info("Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.USER_SERVICE_QUEUE, event.getEventId(), event.getData());
+                LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.USER_SERVICE_QUEUE, event.getEventId(), event.getData());
                 EventHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
                 if(commandHandler != null)
                     commandHandler.handleCommand(event.getData());
