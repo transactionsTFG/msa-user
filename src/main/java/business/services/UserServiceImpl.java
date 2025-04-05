@@ -29,6 +29,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean beginCreateUser(CreateUserDTO userDTO) {
+        if (this.entityManager.createNamedQuery("User.findByEmail", User.class)
+                .setParameter("email", userDTO.getEmail()).getResultList().isEmpty()) 
+            return false;
+        
         User u = UserMapper.INSTANCE.createUserDTOtoEntity(userDTO, SagaPhases.STARTED);
         this.entityManager.persist(u);
         this.entityManager.flush();
