@@ -15,11 +15,11 @@ import org.apache.logging.log4j.Logger;
 
 import domainevent.command.handler.EventHandler;
 import domainevent.registry.EventHandlerRegistry;
-import integration.consts.JMSQueueNames;
+import msa.commons.consts.JMSQueueNames;
 import msa.commons.event.Event;
 
 
-@MessageDriven(mappedName = JMSQueueNames.USER_SERVICE_QUEUE)
+@MessageDriven(mappedName = JMSQueueNames.AGENCY_USER_SERVICE_QUEUE)
 public class DomainEventConsumerUserService implements MessageListener{
     
     private Gson gson;
@@ -32,7 +32,7 @@ public class DomainEventConsumerUserService implements MessageListener{
         try {
             if(msg instanceof TextMessage m) {
                 Event event = this.gson.fromJson(m.getText(), Event.class);
-                LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.USER_SERVICE_QUEUE, event.getEventId(), event.getData());
+                LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.AGENCY_USER_SERVICE_QUEUE, event.getEventId(), event.getData());
                 EventHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
                 if(commandHandler != null)
                     commandHandler.handleCommand(event.getData());
