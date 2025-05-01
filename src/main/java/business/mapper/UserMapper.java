@@ -15,5 +15,7 @@ public interface UserMapper {
     UserDTO entityToDto(User userDTO);
     
     @Mapping(target = "active", expression = "java(false)")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "version", ignore = true)
     User createUserDTOtoEntity(CreateUserDTO userDTO, SagaPhases status);
 }

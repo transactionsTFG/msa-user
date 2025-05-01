@@ -11,8 +11,8 @@ import javax.inject.Inject;
 import domainevent.command.handler.EventHandler;
 
 import msa.commons.event.EventId;
-import msa.commons.microservices.user.qualifier.CommitUserQualifier;
-import msa.commons.microservices.user.qualifier.RollbackUserQualifier;
+import business.qualifier.CommitUserQualifier;
+import business.qualifier.RollbackUserQualifier;
 
 @Singleton
 @Startup
