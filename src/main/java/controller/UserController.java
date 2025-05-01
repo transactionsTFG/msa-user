@@ -1,7 +1,6 @@
 package controller;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -12,7 +11,6 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import business.dto.CreateUserDTO;
 import business.servicesevent.UserServicesEventAdapter;
