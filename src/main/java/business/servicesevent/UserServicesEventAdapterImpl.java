@@ -8,8 +8,8 @@ import business.dto.CreateUserDTO;
 import business.services.UserService;
 import business.user.UserDTO;
 import domainevent.publisher.IJMSEventPublisher;
+import msa.commons.commands.user.CreateUserCommand;
 import msa.commons.event.EventId;
-import msa.commons.microservices.user.commandevent.CreateUserCommand;
 
 @Stateless
 public class UserServicesEventAdapterImpl implements UserServicesEventAdapter {
