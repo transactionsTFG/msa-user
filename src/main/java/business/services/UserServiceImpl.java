@@ -1,5 +1,7 @@
 package business.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -22,6 +24,22 @@ public class UserServiceImpl implements UserService {
     @Inject
     public UserServiceImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+    
+    @Override
+    public UserDTO validateUserByEmail(String email) {
+        UserDTO u = this.getUserByEmail(email);
+        if (u == null || !u.getActive() || u.getStatus() != SagaPhases.COMPLETED)
+            return null;
+        return u;
+    }
+
+    @Override
+    public UserDTO getUserByEmail(String email) {
+        List<User> listUser = this.entityManager.createNamedQuery("User.findByEmail", User.class)
+                .setParameter("email", email).getResultList();
+        return listUser.isEmpty() ? null : UserMapper.INSTANCE.entityToDto(listUser.get(0));
     }
 
     @Override
@@ -50,6 +68,5 @@ public class UserServiceImpl implements UserService {
         this.entityManager.remove(user);
     }
 
-    
-    
+
 }

@@ -1,5 +1,7 @@
 package domainevent.command.handler;
 
+import msa.commons.event.eventoperation.EventOperation;
+
 public interface EventHandler {
-    void handleCommand(Object event);
+    void handleCommand(String json, EventOperation operation);
 }

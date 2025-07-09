@@ -8,15 +8,15 @@ import java.util.Hashtable;
 public class WlsAtoB {
 
     /* 1) Nos conectamos ÚNICAMENTE al dominio A (Agency) */
-    private static final String URL_A      = "t3://localhost:9001";
+    private static final String URL_A      = "t3://localhost:8001";
     private static final String USER_A     = "weblogic";
     private static final String PASSWORD_A = "password1$";
 
     /* 2) Alias locales que expone el Foreign Server */
-    private static final String CF_LOCAL   = "jmsremote/connectionFactoryAirline";              // Foreign CF
-    private static final String QUEUE_LOCAL = "jmsremote/orchestratorAirline"; // Foreign Dest
-    //private static final String CF_LOCAL   = "jms/connectionFactory";              // Foreign CF
-    //private static final String QUEUE_LOCAL = "jms/agencyOrchestatorQueue"; // Foreign Dest
+    //private static final String CF_LOCAL   = "jmsremote/connectionFactoryAirline";              // Foreign CF
+    //private static final String QUEUE_LOCAL = "jmsremote/orchestratorAirline"; // Foreign Dest
+    private static final String CF_LOCAL   = "jmsremote/connectionFactoryAgency";              // Foreign CF
+    private static final String QUEUE_LOCAL = "jmsremote/orchestratorAgency"; // Foreign Dest
     public static void main(String[] args) throws Exception {
 
         /* InitialContext contra el Server A */

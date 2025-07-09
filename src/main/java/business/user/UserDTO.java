@@ -1,6 +1,7 @@
 package business.user;
 
 import lombok.Data;
+import msa.commons.saga.SagaPhases;
 
 @Data
 public class UserDTO {
@@ -13,4 +14,5 @@ public class UserDTO {
     private String phone;
     private String surname;
     private String typeUser;
+    private SagaPhases status;
 }
