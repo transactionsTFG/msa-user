@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import business.qualifier.CommitUserQualifier;
 import domainevent.command.handler.BaseHandler;
 import domainevent.command.handler.EventHandler;
-import msa.commons.event.eventoperation.EventOperation;
 import msa.commons.parser.NumberParser;
 
 @Stateless
@@ -14,7 +13,7 @@ import msa.commons.parser.NumberParser;
 @Local(EventHandler.class)
 public class ConfirmCreateUserEvent extends BaseHandler {    
     @Override
-    public void handleCommand(String json, EventOperation operation) {
+    public void handleCommand(String json) {
         long idTypeUser = NumberParser.toLong(json);
         this.userService.confirmCreateUser(idTypeUser);
     } 

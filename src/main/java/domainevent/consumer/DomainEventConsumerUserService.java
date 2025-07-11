@@ -35,7 +35,7 @@ public class DomainEventConsumerUserService implements MessageListener{
                 LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.AGENCY_USER_SERVICE_QUEUE, event.getEventId(), event.getValue());
                 EventHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
                 if(commandHandler != null)
-                    commandHandler.handleCommand(this.gson.toJson(event.getValue()), event.getOperation());
+                    commandHandler.handleCommand(this.gson.toJson(event.getValue()));
             }
         } catch (Exception e) {
             LOGGER.error("Error al recibir el mensaje: {}", e.getMessage());

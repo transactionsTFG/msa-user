@@ -26,8 +26,7 @@ public class UserServicesEventAdapterImpl implements UserServicesEventAdapter {
         if (isCreated == null) 
             return false;   
         EventData e = new EventData(UUID.randomUUID().toString(), new ArrayList<>(), new CreateUserCommand(isCreated.getId(), userDTO.getTypeUser()));
-        this.jmsEventDispatcher.publish(EventId.VALIDATE_TYPE_USER, e, null);
-
+        this.jmsEventDispatcher.publish(EventId.VALIDATE_TYPE_USER, e);
         return true;
     }
 
