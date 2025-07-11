@@ -29,16 +29,9 @@ public class ValidateUserEvent extends BaseHandler {
         EventData event = EventData.fromJson(json, CreateReservationCommand.class);
         CreateReservationCommand command = (CreateReservationCommand) event.getData();
         UserDTO user = this.userService.getUserByEmail(command.getCustomerInfo().getEmail());
-
-        if (user == null) {
-            event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_ROLLBACK); 
-            this.jmsEventDispatcher.publish(EventId.CREATE_RESERVATION_TRAVEL, event);
-        }
-        else { 
-            event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_BEGIN);
-            this.jmsEventDispatcher.publish(EventId.RESERVATION_AIRLINE_CREATE_RESERVATION_BEGIN_SAGA, event);
-        }
-        
+        if (user == null)   event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_ROLLBACK); 
+            else  event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_BEGIN);
+        this.jmsEventDispatcher.publish(EventId.CREATE_RESERVATION_TRAVEL, event);
     }
 
 }
