@@ -26,9 +26,9 @@ public class JMSEventPublisher implements IJMSEventPublisher {
     private Gson gson;
 
     @Override
-    public void publish(EventId eventId, Object data){
+    public void publish(EventId eventId, EventData data){
         try(JMSContext jmsContext = connectionFactory.createContext()) {
-            Event sendMsg = new Event(eventId, (EventData) data);
+            Event sendMsg = new Event(eventId, data);
             final String msg = this.gson.toJson(sendMsg);
             TextMessage txt = jmsContext.createTextMessage(msg);
             txt.setStringProperty(PropertiesConsumer.ORIGIN_QUEUE, JMSQueueNames.AGENCY_ORCHESTATOR_QUEUE);
