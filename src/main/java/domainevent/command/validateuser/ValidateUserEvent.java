@@ -8,6 +8,7 @@ import business.user.UserDTO;
 import domainevent.command.handler.BaseHandler;
 import domainevent.command.handler.EventHandler;
 import msa.commons.commands.createreservation.CreateReservationCommand;
+import msa.commons.commands.createreservation.model.CustomerInfo;
 import msa.commons.event.EventData;
 import msa.commons.event.EventId;
 import msa.commons.event.eventoperation.reservation.ReservationAirline;
@@ -28,10 +29,19 @@ public class ValidateUserEvent extends BaseHandler {
     private void handleCreateReservationAirline(String json) {
         EventData event = EventData.fromJson(json, CreateReservationCommand.class);
         CreateReservationCommand command = (CreateReservationCommand) event.getData();
-        UserDTO user = this.userService.getUserByEmail(command.getCustomerInfo().getEmail());
-        if (user == null)   event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_ROLLBACK); 
+        UserDTO user = this.userService.getUserById(command.getIdUser());   
+        if (user == null) event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_ROLLBACK); 
             else  event.setOperation(ReservationAirline.CREATE_RESERVATION_ONLY_AIRLINE_BEGIN);
+        
+        if (user != null) {
+            CustomerInfo customerInfo = command.getCustomerInfo();
+            customerInfo.setEmail(user.getEmail());
+            customerInfo.setName(user.getName());
+            customerInfo.setPhone(user.getPhone());
+        }
+        
         this.jmsEventDispatcher.publish(EventId.CREATE_RESERVATION_TRAVEL, event);
     }
+
 
 }

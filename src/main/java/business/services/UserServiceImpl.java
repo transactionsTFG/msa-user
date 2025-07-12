@@ -68,5 +68,13 @@ public class UserServiceImpl implements UserService {
         this.entityManager.remove(user);
     }
 
+    @Override
+    public UserDTO getUserById(long id) {
+        User user = this.entityManager.find(User.class, id, LockModeType.OPTIMISTIC);
+        if (user == null) 
+            return null;
+        return UserMapper.INSTANCE.entityToDto(user);
+    }
+
 
 }
