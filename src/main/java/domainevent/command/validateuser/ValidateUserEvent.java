@@ -22,7 +22,7 @@ public class ValidateUserEvent extends BaseHandler {
     @Override
     public void handleCommand(String json) {
         EventData eventData = this.gson.fromJson(json, EventData.class);
-        if (UserValidate.CREATE_RESERVATION_AIRLINE.name().equals(eventData.getOperation().getOperation())) 
+        if (UserValidate.CREATE_RESERVATION_AIRLINE.equals(eventData.getOperation())) 
             this.handleCreateReservationAirline(json);
     }
 
