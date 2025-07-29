@@ -10,5 +10,5 @@ public class CreateUserDTO {
     private String password;
     private String phone;
     private String surname;
-    private String typeUser;
+    private long typeUser;
 }
