@@ -8,6 +8,7 @@ public interface UserService {
     void confirmCreateUser(long id);
     void cancelCreateUser(long id);
     UserDTO getUserById(long id);
+    UserDTO getUserByEmailAndPassword(String email, String password);
     UserDTO getUserByEmail(String email);
     UserDTO validateUserByEmail(String email);
 }

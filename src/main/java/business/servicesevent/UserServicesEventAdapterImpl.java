@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import business.dto.CreateUserDTO;
+import business.dto.LoginUserDTO;
 import business.services.UserService;
 import business.user.UserDTO;
 import domainevent.publisher.IJMSEventPublisher;
@@ -30,6 +31,11 @@ public class UserServicesEventAdapterImpl implements UserServicesEventAdapter {
         return true;
     }
 
+    @Override
+    public UserDTO getUser(LoginUserDTO loginUserDTO) {
+        return this.userService.getUserByEmailAndPassword(loginUserDTO.getEmail(), loginUserDTO.getPassword());
+    }
+
     @EJB
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -39,4 +45,6 @@ public class UserServicesEventAdapterImpl implements UserServicesEventAdapter {
     public void setJmsEventDispatcher(IJMSEventPublisher jmsEventDispatcher) {
         this.jmsEventDispatcher = jmsEventDispatcher;
     }
+
+   
 }

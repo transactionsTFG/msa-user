@@ -76,5 +76,16 @@ public class UserServiceImpl implements UserService {
         return UserMapper.INSTANCE.entityToDto(user);
     }
 
+    @Override
+    public UserDTO getUserByEmailAndPassword(String email, String password) {
+        User user = this.entityManager.createNamedQuery("User.findByEmailAndPassword", User.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getSingleResult();
+        if (user == null) 
+            return null;
+        return UserMapper.INSTANCE.entityToDto(user);
+    }
+
 
 }
