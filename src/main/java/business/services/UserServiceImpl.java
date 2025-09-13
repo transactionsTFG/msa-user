@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
 import business.dto.CreateUserDTO;
+import business.external.typeuser.TypeUserApiClient;
+import business.external.typeuser.TypeUserDTO;
 import business.mapper.UserMapper;
 import business.user.User;
 import business.user.UserDTO;
@@ -18,6 +20,7 @@ import msa.commons.saga.SagaPhases;
 public class UserServiceImpl implements UserService {
 
     private EntityManager entityManager;
+    private TypeUserApiClient typeUserApiClient;
 
     public UserServiceImpl() {}
 
@@ -26,6 +29,10 @@ public class UserServiceImpl implements UserService {
         this.entityManager = entityManager;
     }
 
+    @Inject
+    public void setTypeUserApiClient(TypeUserApiClient typeUserApiClient) {
+        this.typeUserApiClient = typeUserApiClient;
+    }
     
     @Override
     public UserDTO validateUserByEmail(String email) {
@@ -81,10 +88,14 @@ public class UserServiceImpl implements UserService {
         User user = this.entityManager.createNamedQuery("User.findByEmailAndPassword", User.class)
                 .setParameter("email", email)
                 .setParameter("password", password)
-                .getSingleResult();
+                .getResultList().stream().findFirst().orElse(null);
         if (user == null) 
             return null;
-        return UserMapper.INSTANCE.entityToDto(user);
+
+        UserDTO userDTO = UserMapper.INSTANCE.entityToDto(user);
+        TypeUserDTO typeUser = this.typeUserApiClient.getTypeUserById(user.getTypeUser());
+        userDTO.setTypeUser(typeUser.getName());
+        return userDTO;
     }
 
 
